@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70212" creator="Ipe 7.2.13">
-<info created="D:20191028212423" modified="D:20191029082343"/>
+<info created="D:20191028212423" modified="D:20191105091243"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -340,7 +340,7 @@ h
 </group>
 <text matrix="1 0 0 1 -152.606 410.435" transformations="translations" pos="192.327 387.924" stroke="red" type="label" width="56.694" height="6.926" depth="1.93" valign="baseline">$v_3=$?, $P_3=$?</text>
 <use matrix="1 0 0 1 -106.005 4.44407" name="mark/disk(sx)" pos="144.131 740.781" size="normal" stroke="red"/>
-<text matrix="1 0 0 1 -106.22 -1.79162" transformations="translations" pos="131.084 771.253" stroke="black" type="label" width="25.522" height="5.785" depth="0.99" valign="baseline" size="small">$v_1 = 0$</text>
+<text matrix="1 0 0 1 -106.22 -1.79162" transformations="translations" pos="131.084 771.253" stroke="black" type="label" width="25.522" height="5.785" depth="0.99" valign="baseline" size="small" style="math">v_1 = 0</text>
 <text matrix="1 0 0 1 -106.22 -11.898" transformations="translations" pos="131.084 771.253" stroke="black" type="label" width="26.93" height="6.133" depth="0.99" valign="baseline" size="small" style="math">P_1 = 0</text>
 <text matrix="1 0 0 1 -106.865 -21.3594" transformations="translations" pos="131.084 771.253" stroke="black" type="label" width="40.618" height="5.785" depth="0.99" valign="baseline" size="small" style="math">z_1 = 3.2 m</text>
 <use matrix="1 0 0 1 -106.005 5.94924" name="mark/disk(sx)" pos="196.666 785.014" size="normal" stroke="red"/>
@@ -353,7 +353,7 @@ h
 <text matrix="1 0 0 1 -69.6663 -83.5007" transformations="translations" pos="131.084 771.253" stroke="black" type="label" width="26.93" height="6.133" depth="0.99" valign="baseline" size="small" style="math">P_2 = 0</text>
 <text matrix="1 0 0 1 -70.3109 -92.9621" transformations="translations" pos="131.084 771.253" stroke="black" type="label" width="33.451" height="5.785" depth="0.99" valign="baseline" size="small" style="math">z_2 = 0 m</text>
 <text matrix="1 0 0 1 -104.384 84.0606" transformations="translations" pos="224.404 661.59" stroke="black" type="label" width="38.463" height="5.535" depth="0" valign="baseline" size="footnote">Reference </text>
-<text matrix="1 0 0 1 -124.381 85.9958" transformations="translations" pos="245.261 652.559" stroke="black" type="label" width="33.516" height="5.535" depth="0" valign="baseline" size="footnote">Level 2-3</text>
+<text matrix="1 0 0 1 -124.381 85.9958" transformations="translations" pos="245.261 652.559" stroke="black" type="label" width="33.516" height="5.535" depth="0" valign="baseline" size="footnote">Level 1-3</text>
 <text matrix="1 0 0 1 -96.881 24.6101" transformations="translations" pos="224.404 661.59" stroke="black" type="label" width="38.463" height="5.535" depth="0" valign="baseline" size="footnote">Reference </text>
 <text matrix="1 0 0 1 -116.878 26.5453" transformations="translations" pos="245.261 652.559" stroke="black" type="label" width="33.516" height="5.535" depth="0" valign="baseline" size="footnote">Level 1-2</text>
 <path matrix="-0.0511908 1.08081 -1.01168 0.351722 811.068 226.159" stroke="red">
@@ -459,7 +459,7 @@ h
 <text matrix="1 0 0 1 120.709 -83.771" transformations="translations" pos="131.084 771.253" stroke="black" type="label" width="26.93" height="6.133" depth="0.99" valign="baseline" size="small" style="math">P_2 = 0</text>
 <text matrix="1 0 0 1 120.065 -93.2324" transformations="translations" pos="131.084 771.253" stroke="black" type="label" width="33.451" height="5.785" depth="0.99" valign="baseline" size="small" style="math">z_2 = 0 m</text>
 <text matrix="1 0 0 1 92.7519 84.6016" transformations="translations" pos="224.404 661.59" stroke="black" type="label" width="38.463" height="5.535" depth="0" valign="baseline" size="footnote">Reference </text>
-<text matrix="1 0 0 1 72.7547 86.5368" transformations="translations" pos="245.261 652.559" stroke="black" type="label" width="33.516" height="5.535" depth="0" valign="baseline" size="footnote">Level 2-3</text>
+<text matrix="1 0 0 1 72.7547 86.5368" transformations="translations" pos="245.261 652.559" stroke="black" type="label" width="33.516" height="5.535" depth="0" valign="baseline" size="footnote">Level 1-3</text>
 <text matrix="1 0 0 1 94.0354 24.8807" transformations="translations" pos="224.404 661.59" stroke="black" type="label" width="38.463" height="5.535" depth="0" valign="baseline" size="footnote">Reference </text>
 <text matrix="1 0 0 1 74.0382 26.8159" transformations="translations" pos="245.261 652.559" stroke="black" type="label" width="33.516" height="5.535" depth="0" valign="baseline" size="footnote">Level 1-2</text>
 <path matrix="0.51761 1.0577 -0.659522 0.933366 645.56 -169.278" stroke="red">
@@ -565,13 +565,13 @@ h
 <text matrix="1 0 0 1 308.11 -82.9597" transformations="translations" pos="131.084 771.253" stroke="black" type="label" width="26.93" height="6.133" depth="0.99" valign="baseline" size="small" style="math">P_2 = 0</text>
 <text matrix="1 0 0 1 307.466 -92.4211" transformations="translations" pos="131.084 771.253" stroke="black" type="label" width="33.451" height="5.785" depth="0.99" valign="baseline" size="small" style="math">z_2 = 0 m</text>
 <text matrix="1 0 0 1 274.204 85.1424" transformations="translations" pos="224.404 661.59" stroke="black" type="label" width="38.463" height="5.535" depth="0" valign="baseline" size="footnote">Reference </text>
-<text matrix="1 0 0 1 254.206 87.0776" transformations="translations" pos="245.261 652.559" stroke="black" type="label" width="33.516" height="5.535" depth="0" valign="baseline" size="footnote">Level 2-3</text>
+<text matrix="1 0 0 1 254.206 87.0776" transformations="translations" pos="245.261 652.559" stroke="black" type="label" width="33.516" height="5.535" depth="0" valign="baseline" size="footnote">Level 1-3</text>
 <text matrix="1 0 0 1 280.084 25.9624" transformations="translations" pos="224.404 661.59" stroke="black" type="label" width="38.463" height="5.535" depth="0" valign="baseline" size="footnote">Reference </text>
 <text matrix="1 0 0 1 260.087 27.8976" transformations="translations" pos="245.261 652.559" stroke="black" type="label" width="33.516" height="5.535" depth="0" valign="baseline" size="footnote">Level 1-2</text>
 <path matrix="0.785379 0.452956 -0.091803 0.953792 341.306 -27.3356" stroke="red">
 51.2939 0 0 51.2939 227.844 723.947 e
 </path>
-<text matrix="1 0 0 1 68.6867 -25.9603" transformations="translations" pos="202.758 835.63" stroke="red" type="label" width="27.566" height="6.926" depth="1.93" valign="baseline">$Q_3=?$</text>
+<text matrix="1 0 0 1 68.6867 -25.9603" transformations="translations" pos="202.758 835.63" stroke="red" type="label" width="27.566" height="6.926" depth="1.93" valign="baseline" style="math">Q_3=?</text>
 <text matrix="1 0 0 1 337.736 7.14733" transformations="translations" pos="70.2317 776.413" stroke="blue" type="label" width="27.674" height="6.815" depth="1.93" valign="baseline">Step 5</text>
 <text matrix="1 0 0 1 253.294 412.869" transformations="translations" pos="192.327 387.924" stroke="red" type="label" width="26.086" height="6.923" depth="1.49" valign="baseline">$P_3=$?</text>
 </page>
