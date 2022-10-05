@@ -1,0 +1,513 @@
+
+\documentclass{beamer}
+\usetheme{limhp}
+
+
+
+\usepackage{bbding}
+\usepackage{listings}
+\usepackage{textcomp}
+%\usepackage{ccicons}
+\usepackage{booktabs,colortbl}
+\usepackage{color, xcolor}
+\usepackage{verbatim}
+\usepackage{ragged2e} % for justifying
+%\usepackage[timeinterval=60]{tdclock} 
+
+%define different colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{lgray}{gray}{0.95}
+\definecolor{links}{HTML}{F58607}
+
+%for code colours
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=false,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=4
+}
+
+\lstset{style=mystyle}
+
+
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+\newcommand{\pt}{\textbf{\textsf{Python }}}
+\newcommand{\ju}{\textbf{\textsf{JUPYTER }}}
+
+
+
+\newenvironment<>{varblock}[2][.9\textwidth]{%
+	\setlength{\textwidth}{#1}
+	\begin{actionenv}#3%
+		\def\insertblocktitle{#2}%
+		\par%
+		\usebeamertemplate{block begin}}
+	{\par%
+		\usebeamertemplate{block end}%
+	\end{actionenv}}
+
+
+
+\makeatletter
+\renewcommand\insertshorttitle[1][]{%
+	\beamer@setupshort{#1}%
+	\let\thanks=\@gobble%
+	\hyperlinkpresentationstart{{\beamer@shorttitle}}%
+	}
+\makeatother
+
+
+\usepackage[absolute,overlay]{textpos} 
+\setlength{\TPHorizModule}{1mm}
+\setlength{\TPVertModule}{1mm} 
+\newcommand{\MyLogo}{
+	\begin{textblock}{15}(107.5,9)
+		\includegraphics[width=1.5cm]{HTWlogo}
+	\end{textblock}
+}
+
+%setting itemize design
+\useinnertheme{rectangles}
+  \setbeamercolor{item projected}{bg=red!60!black,fg=white}
+\setbeamertemplate{sections/subsections in toc}[square]
+\setbeamertemplate{items}[circle]
+
+
+%remove navigation symbols
+\beamertemplatenavigationsymbolsempty  
+%ToC always on page 2
+\def\hyperlinkpresentationstart{\hyperlink{Navigation2}}
+
+\title[HM with Jupyter]{\Large\textbf{Computation in Python/JUPYTER}}
+\subtitle{\textbf{\Large\textbf{Introduction}}}
+\author[P.K. Yadav, HTW/TUD]{\Large \textbf{\underline{Yadav, Prabhas. K.} }}
+\institute[]{\textbf{\textbf{\small \href{mailto:prabhaskumar.yadav@htw-dresden.de}{prabhaskumar.yadav@htw-dresden.de}}}}
+\date[13. Oct. 2022]{\begin{textblock}{45}(1.5,72)
+		\textbf{13 Oct. 2022}
+	\end{textblock}} 
+
+	
+%setting the figures folder	
+\graphicspath{{./figures/}}	
+
+	
+ \begin{document}
+ \addtobeamertemplate{block begin}{\setlength\abovedisplayskip{0pt}}	
+ 	
+{
+
+	\renewcommand{\insertnavigation}[1]{}
+	\setbeamertemplate{footline}{} 
+	\usenavigationsymbolstemplate{}
+	\begin{frame}
+			\MyLogo
+				\titlepage
+	\end{frame}
+	
+	
+}
+
+{
+	 	%	\renewcommand{\insertnavigation}[1]{}
+ 	\begin{frame}{\textbf{Today's Contents}}
+ 			\MyLogo
+ 		\tableofcontents
+ 	\end{frame}
+ 	
+}
+ 	
+ 
+ 	\section{Introduction to \pt \& \ju}
+ 	\begin{frame}[fragile]{\textbf{What is Python? }}
+ 		\MyLogo
+\pt is an \underline{open-source} \underline{interpreted}, \underline{high-level}, general-purpose programming language. This means:\\\vskip0.3cm
+    \begin{enumerate}
+    	\justifying 
+\item \textbf{Interpreted/high-level language}: This makes us avoid the nuances of fundamental coding as done by computer programmers/engineers.\vskip0.2cm
+\item \textbf{General purpose programming language and Open-source ecosystem}: This means it is extensible. Already over 200,000 \pt packages are available (check \href{https://pypi.org/}{here}). Also, it means  \textbf{FREE} of cost.\vskip0.2cm
+\item \textbf{For Hydraulics Modelling}: We can use \pt packages such as \verb|Numpy|  (for numerical computing), \verb|Scipy| (for scientific computing), \verb|Sympy| (for symbolic computing), \verb|Matplotlib| (for plotting) etc. for our computing and modelling in the course.
+    \end{enumerate}
+
+ 	\end{frame} 
+ 	
+ \begin{frame} \frametitle{\textbf{A Bit of \pt History}}
+ 	\begin{itemize}
+ 		 		\MyLogo
+ 		\justifying
+ 		\item Guido van Rossum began developing  \pt in 1980 at Centrum Wiskunde \& Informatica (\href{https://www.cwi.nl/}{CWI}), the Netherlands. Its implementation (\pt v.1) was released in 1994.\vskip0.2cm
+ 		
+ 		\item \pt 2.0, released in 2000 became one of the most used general purpose programming language. \pt 2.0 is now being replaced by \pt 3.0 (from 2020). \vskip0.2cm
+ 		
+ 		\item \pt 3.0 will be used in our class. It is \textbf{not} 100\% compatible with earlier versions of \pt.\vskip0.2cm
+ 		
+ 		\item \pt name comes from the British comedy group \href{https://www.youtube.com/watch?v=vnciwwsvNcc}{Monty Python} (Van Rossum enjoyed their show).
+ 		 The official Python documentation (\href{https://www.python.org/doc/}{check here}) also contains various references to Monty Python routines.
+ 		
+ 	\end{itemize}
+ 	
+ \end{frame}	
+ 	
+ 
+\begin{frame}
+	\frametitle{\textbf{Why Use Python?}}
+	 		\MyLogo
+	\begin{itemize}
+		\justifying
+		\item \pt is a \textbf{common tool} among engineers, experts and researchers at universities and industry. 
+		\vspace{5.5pt}
+		\item \pt is s\textbf{ystem independent}, therefore it is highly portable. Beside, it is a versatile (multi-purpose) language.
+
+		\vspace{5.5pt}
+		\item \pt is incredibly flexible and can be adapted to specific local needs using enormous number of \textbf{PACKAGES}. Beside, it can easily interface with other languages
+		\vspace{5.5pt}
+		\item \pt is under incredibly active development, improving greatly, and supported \textbf{wildly} by both professional and academic developers
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}\frametitle{\textbf{Popularity of \pt}}
+		 		\MyLogo
+	\vspace{-0.5cm}
+	
+	\begin{columns}
+		
+		\begin{column}{0.6\linewidth}
+			
+			\includegraphics[width=1.1\textwidth]{fig_P1_0.png}
+			
+			
+		\end{column}
+		
+		\begin{column}{0.4\textwidth}
+			\begin{enumerate}
+				\justifying 
+				\item \pt has become a mainstream computing language.
+				\item Details on plot are \href{https://insights.stackoverflow.com/}{here.}
+				\item This all means - it is good to learn to code in \pt
+			\end{enumerate}
+		\end{column}
+		
+	\end{columns}
+	
+\end{frame}
+ 	
+\section{Very basics of Python Language}
+\begin{frame}[fragile]\frametitle{Basic of \pt{} language}
+	\justifying 	 		\MyLogo
+	Very basics of \pt{}before starting \ju Notebook
+	
+	\begin{minipage}{0.6\linewidth}
+		
+		\begin{varblock}[10cm]{}
+			
+			\begin{itemize}
+				\item[\HandRight] \textcolor{red}{\textbf{Comments symbol}}: with  \textbf{\#}
+				\item[\HandRight] \textcolor{red}{\textbf{End statement}}: with semicolon (;) or line-end 
+				\item[\HandRight] \textcolor{red}{\textbf{Multi-line statement}}: with continuation character (\textbf{\textbackslash})
+					\item[\HandRight] \textcolor{red}{\textbf{Multiple statement}}: separate each with \textbf{;}
+				\item[\HandRight] \textcolor{red}{\textbf{Code Indentation}}: is required (4 spaces for each)
+				\item[\HandRight] \textcolor{red}{\textbf{String quotes}}: use either \textbf{`` "} or \textbf{` '}
+				\item[\HandRight] \textcolor{red}{\textbf{Naming}}: is case sensitive $b\neq B$
+				\item[\HandRight] \textcolor{red}{\textbf{Variable Assignment}}: use \textbf{=}, e.g. \verb|x=5|
+				\item[\HandRight] \textcolor{red}{\textbf{Multiple Assignment}}: allowed e.g, \verb|a = b = c = 1| \\ \hskip4cm or \verb|a,b,c = 1,7,10|
+				\item[\HandRight] \textcolor{red}{\textbf{Help}}: use \verb|help()| and \textcolor{red}{\textbf{get the cheatsheet from}} \href{https://github.com/prabhasyadav/HTW/blob/master/Python3-cheatsheet.pdf}{\textbf{here}}
+			\end{itemize}
+			
+		\end{varblock}	
+	\end{minipage}
+	
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{Basic of \pt{} language}
+	\justifying 	 		\MyLogo
+	Data types in \pt{}
+	
+	\begin{minipage}{0.6\linewidth}
+		
+		\begin{varblock}[10.2cm]{}
+			
+			\begin{itemize}
+				\item[\HandRight] \textcolor{red}{\textbf{Numbers}}: numbers of any types: \verb|int (e.g., 10),|\\\hskip1cm\verb|long (e.g., 5192L ), float (e.g., 13.4),| \\\hskip1cm\verb|complex (e.g., 2.13j)|
+				\item[\HandRight] \textcolor{red}{\textbf{String}}: with quotation mark, e.g., \verb|"john"|
+				\item[\HandRight] \textcolor{red}{\textbf{List}}:  are \underline{modifiable} placed in \textbf{[\,]} separated by comma (\textbf{,}). \\\hskip1cm e.g.,  \verb|[1, 3, "apple", 2, "jo"]|
+				\item[\HandRight] \textcolor{red}{\textbf{Tuple}}: are \underline{non- modifiable} placed in \textbf{(\,)} separated by \\\hskip1.2cm comma (\textbf{,}).  e.g.,  \verb|(11, 3, "ape", 2, "job")|
+				\item[\HandRight] \textcolor{red}{\textbf{Dictionary}}: For table-like data. Placed in \textbf{\{\}} separated by comma (\textbf{,}), e.g.,\\ 
+				 \verb|{'name': `john', `code':6734, `dept': `sales'}|
+			\end{itemize}
+		\end{varblock}	
+	\end{minipage}
+	
+\end{frame}
+
+
+\begin{frame}[fragile]\frametitle{Basic of \pt{} language}
+	\MyLogo
+	\justifying
+Basic \textbf{operators} in \pt
+
+
+\begin{minipage}{0.6\linewidth}
+	
+\begin{varblock}[5.6cm]{Arithmetic Operations}
+\begin{tabular}{@{}ccc@{}}
+	\toprule
+	\textbf{Sym.} & \textbf{Operation} & \textbf{e.g.,} \\ \midrule
+	+/- & Add/Subs. & a+b \\
+	* & Multiply & a*b \\ 
+	/ & Divide & a/b \\
+	** & exponent & a**2 = $a^2$ \\ 
+	\% & Modulus & Reminder a/b \\ \bottomrule
+\end{tabular}
+\end{varblock}	
+\end{minipage}
+\hfill
+\begin{minipage}{0.7\linewidth}
+	
+	\begin{varblock}[4.75cm]{Bitwise/Comparison }
+		
+\begin{tabular}{@{}ccc@{}}
+		\toprule
+	\textbf{sym.} & \textbf{Operation} & \textbf{e.g.,} \\ \midrule
+	\& & AND & a \& b \\
+	$\vert$ & OR & a$\vert$b \\
+	== & equal to & a==b \\
+	!= & not equal to & a!=b \\
+	\textgreater{}/\textless{} & greater/less & a\textgreater{}b 
+\end{tabular}
+		
+	\end{varblock}	
+\end{minipage}
+
+\vskip0.3cm
+Refer to \pt documentation for complete description. \pt documentation is very extensive and can be obtained from \href{https://www.python.org/doc/}{\textbf{here}}
+
+\end{frame}
+
+
+\begin{frame}[fragile]\frametitle{Basic of \pt{} language}
+	\MyLogo
+	\justifying
+	A \verb|FUNCTION| in \pt\\\vskip0.1cm
+	
+	A \textbf{function} in a programming provide an ability to develop a reusable code-block with an option of several operations. So, a \textbf{function} have a (or a set) of \textit{input} and provide an (or a set)  \textit{output}. 
+	
+	\begin{minipage}{0.6\linewidth}
+\begin{varblock}[4cm]{\pt Function e.g. }
+	
+\begin{lstlisting}[language=Python]
+def func1(a,b):
+
+	c = a+b
+	d = c*a
+	
+	return c, d
+
+\end{lstlisting}
+		\end{varblock}	
+	\end{minipage}
+\hfill
+	\begin{minipage}{0.4\linewidth}
+	\begin{varblock}[6.3cm]{What is it?}
+	\textcolor{magenta}{\textbf{def}} in line-1 begins a \verb|Function| block \\
+	\textbf{func1} in line 1 is user-defined function name\\
+	\textbf{a,b} in line 1 are function \verb|input|\\
+	\textbf{c,d} in lines 3-4 is function \verb|operation|\\
+	\textcolor{magenta}{\textbf{return}} line-6 is function \verb|output| block 	
+	\end{varblock}	
+\end{minipage}
+\vskip0.2cm
+\textbf{Semicolon} (:) in line 1 and \textbf{Indentation} after line 1 are required.\\
+\textcolor{magenta}{\textbf{def, return}} are \pt keywords. There are quite few of them.
+
+\end{frame}
+
+
+
+
+\section{The JUPYTER Notebook}
+
+\begin{frame}\frametitle{\textbf{The \ju Notebook}}
+	\MyLogo
+	\justifying
+	We avoid hard-coding and long codes in this course. We use something called \textbf{``JUPYTER notebook''}. \textcolor{red}{\textbf{Get \ju cheatsheet from}} \href{https://github.com/prabhasyadav/HTW/blob/master/Jupyter_Cheatsheet.pdf}{\textbf{here}}
+	\vspace{0.4cm}
+	
+	\centering
+	\includegraphics[width=0.8\textwidth]{fig_P1_1}
+	
+\end{frame}
+
+\begin{frame}\frametitle{\textbf{More on \ju{} notebook}}
+	\justifying 	\MyLogo
+	\ju{} -- a much better way to work in \pt that allows on a single display: \vskip0.3cm
+	
+	\begin{itemize}
+		\justifying
+		\item interface for Python and also many other programming language (R, Java, Julia etc.)
+		\item writing and editing of codes (\textit{\underline{we will learn this}})
+		\item operation of \pt and its packages (e.g., Numpy)
+		\item interactively viewing the code output (i.e., results and plots) 
+		\item getting \textbf{help}
+	\end{itemize}
+	\vskip0.3cm
+	The \ju{}notebook runs in the browser (Chrome, Firefox etc.). So, nothing really required to be installed. 
+	
+	\vskip0.3cm
+	
+	For better computing and learning, you are encouraged to install \ju system following the instructions from \href{https://jupyter.readthedocs.io/en/latest/install.html}{\textbf{here}}.
+	
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{\textbf{Interacting with \ju{} notebook}}
+	\justifying 	\MyLogo
+	\ju notebook runs in a browser. \\\vskip0.2cm
+	The first webpage with \ju{}will have http address, \\
+	e.g., \verb|http://localhost:8888/tree|. Internet is \textbf{not} required. \\\vskip0.3cm
+	\ju{}notebook saves file as \verb|IPYNB| file.\\\vskip0.2cm
+	
+\begin{center}
+		\includegraphics[width=0.65\textwidth]{fig_P1_2}
+\end{center}
+
+	The first-page of \ju provides a basic \verb|File-Explorer| of your system - from here it is possible to load available \verb|IPYNB| file or create a new one.
+
+	
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]\frametitle{\textbf{Interacting with \ju{} notebook}}
+	\justifying 	\MyLogo
+\ju notebook has a block-based interface called \textbf{CELL}. \\\vskip0.1cm
+
+Codes are put in the CELL and executed with \textbf{RUN} or using Keyboard buttons \textbf{SHIFT+ENTER}\vskip0.1cm
+
+The first \verb|CELL| is usually for importing \verb|PACKAGES| - such as \verb|Numpy|, \verb|Scipy|, \verb|Matplotlib|
+
+\begin{center}
+	\includegraphics[width=0.55\textwidth]{fig_P1_3}
+\end{center}
+
+Texts in \textcolor{green}{green -- (imports, from, as)} are \pt keywords. \vskip0.1cm
+In this block \verb|numpy| and \verb|matplotlib.pyplot| is imported to \ju  \vskip0.1cm
+Also a single function of a package can be imported -- in second line the function \verb|erf| is imported
+
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{\textbf{Interacting with \ju{} notebook}}
+	\justifying 	\MyLogo
+\vspace{-0.3cm}
+	For a \textbf{basic} operation (e.g., as a \verb|CALCULATOR|) in \ju{}notebook:
+	\begin{enumerate}
+		\item Variables (e.g., \verb|a, b, c|) are first defined.\vskip0.05cm
+		\item Operation using \verb|Operators| and variables are stated.\vskip0.05cm
+	\item Result is printed when \verb|OUTPUT| variable is put (see last line)
+		\item Code is \textbf{executed} with \verb|Run| or using keybboard.
+	\end{enumerate}
+
+	\begin{center}
+		\includegraphics[width=0.65\textwidth]{fig_P1_4}
+	\end{center}
+	\justifying 
+\textbf{NOTE: }	The interactivity between \textcolor{blue}{In [3]} and \textcolor{red}{Out [3]} in the code-block can be repeated only for the particular cell.
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{\textbf{Interacting with \ju{} notebook}}
+	\justifying 	\MyLogo
+	
+	For a complex operation (e.g., defining own \verb|FUNCTION|) in \ju{}notebook:\vskip0.1cm
+	We will learn these by solving our own problems- as we progress with the course.\vskip0.1cm
+	Here is a basic example how it all works. \vskip0.1cm
+	
+ \begin{columns}
+ 	\begin{column}{0.5\textwidth}
+ 		\textbf{Definition parts}
+ 		\includegraphics[width=1.1\textwidth]{fig_P1_5}
+ 	\end{column}
+ 	\begin{column}{0.5\textwidth} 
+ 		\textbf{Execution and Result parts}
+ 		\begin{center}
+ 			\includegraphics[width=0.8\textwidth]{fig_P1_6}
+ 		\end{center}
+ 	\end{column}
+ \end{columns}
+	
+
+
+	
+\end{frame}
+
+\begin{frame}[fragile]\frametitle{\textbf{Next steps with \pt{}and \ju{}}}
+	\justifying 	\MyLogo
+
+\pt is \textbf{HUGE}. Becoming a \pt expert or a programmer is not our \textbf{GOAL}. Here we want to make our \textbf{HYDRAULICS MODELLING} computation easy.	For that a very small part of a much smaller part of \pt called \href{https://scientific-python.org/}{\textbf{SCIENTIFIC PYTHON}} is sufficient.\\\vskip0.1cm
+
+So we focus on following package (mostly \textbf{SELF STUDY})
+\\\vskip0.1cm
+\begin{enumerate}
+\item \verb|Numpy|: For matrix and numerical works (see \href{https://numpy.org/doc/}{Numpy docs})
+\item \verb|Matplotlib|: For plots and visualizations (see \href{https://matplotlib.org/users/index.html}{Mat docs})
+\item \verb|Scipy|: For computations and modelling (see \href{https://docs.scipy.org/doc/}{Scipy docs})
+\item \verb|Sympy|: For symbolic calculations (see \href{https://docs.sympy.org/latest/index.html}{Sympy docs})
+\item \verb|Pandas|: For database manipulation (see \href{https://pandas.pydata.org/pandas-docs/stable/}{Pandas docs})
+\item \verb|Statsmodels|: For statistical modelling (see \href{	https://www.statsmodels.org/stable/examples/index.html}{docs here})
+\item and more as required \ldots
+\end{enumerate}
+
+\end{frame}
+
+
+
+{
+	%\setbeamertemplate{navigation symbols}{}
+		\renewcommand{\insertnavigation}[1]{}	
+	\setbeamertemplate{footline}{} 
+	\begin{frame}[fragile]{\huge \textbf{Python is easy$\ldots$,}}
+		\beamertemplatenavigationsymbolsempty
+		\Large
+		
+		\textbf{Let us learn to work in \ju environment}  \\\vspace{0.4cm} 
+
+We will focus on \verb|Numpy|, \verb|Scipy| and \verb|Matplotlib| for our computation and modelling requirements.
+
+
+\renewcommand{\insertnavigation}[1]{}	
+		
+		
+	\end{frame}
+	
+}		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 	
+ 	
+ 	
+ \end{document} 

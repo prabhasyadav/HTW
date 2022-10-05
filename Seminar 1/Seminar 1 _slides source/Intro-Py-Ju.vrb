@@ -1,0 +1,12 @@
+\frametitle{\huge \textbf {Python is easy$\ldots $,}}
+\beamertemplatenavigationsymbolsempty
+		\Large
+		
+		\textbf{Let us learn to work in \ju environment}  \\\vspace{0.4cm}
+
+We will focus on \verb|Numpy|, \verb|Scipy| and \verb|Matplotlib| for our computation and modelling requirements.
+
+
+\renewcommand{\insertnavigation}[1]{}	
+		
+		
